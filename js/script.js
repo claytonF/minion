@@ -11,13 +11,11 @@ var mouseTrack = {
 	init: function(){
 		this.cacheDom();
 		this.trackMouse();
-		//this.eyePos();
 	},
 	cacheDom: function() {
 		this.$container = $(".container");
 		this.$eye = $(".eye");
 		this.$pupil = $(".pupil")
-		//console.log(this.$pupil);
 	},
 	trackMouse: function(){
 		var pupil = this.$pupil;
@@ -25,9 +23,7 @@ var mouseTrack = {
 		var height = this.$container.height();
 		var pupilTop = this.$pupil.css("top");
 		var pupilLeft = this.$pupil.css("left");
-		//console.log(this.$container.width());
 		this.$container.mousemove(function(event){
-			//console.log(pupil);
 			var x = event.clientX;
 			var y = event.clientY;
 			xPos = Math.min(Math.max(20, Math.round((x / width)*100)),80),
@@ -35,26 +31,11 @@ var mouseTrack = {
 			for (i = 0; i<pupil.length; i ++) {
 				$(pupil[i]).css({"top": yPos + "%"});
 				$(pupil[i]).css({"left": xPos + "%"});
-			}
-				
-
-			//pupilLeft = xPos;
-			
-			
+			}					
 		});
 		
 	},
-	eyePos: function() {
-		var mousePosn = this.trackMouse();
-		//console.log(mousePosn);
-		var pupilTop = this.$pupil.top;
-		
-		
-	}
-
-
 };
-console.log(mouseTrack);
 mouseTrack.init();
 //})();
 
